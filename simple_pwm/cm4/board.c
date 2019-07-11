@@ -13,7 +13,7 @@
 #include "fsl_debug_console.h"
 #if defined(SDK_I2C_BASED_COMPONENT_USED) && SDK_I2C_BASED_COMPONENT_USED
 #include "fsl_i2c.h"
-#endif /* SDK_I2C_BASED_COMPONENT_USED */
+#endif 
 #if defined BOARD_USE_CODEC
 #include "fsl_wm8904.h"
 #endif
