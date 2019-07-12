@@ -63,7 +63,6 @@ outputs:
 void BOARD_BootClockFRO12M(void)
 {
     /*!< Set up the clock sources */
-    /*!< Set up FRO */
     POWER_DisablePD(kPDRUNCFG_PD_FRO_EN); /*!< Ensure FRO is on  */
     CLOCK_AttachClk(kFRO12M_to_MAIN_CLK); /*!< Switch to FRO 12MHz first to ensure we can change voltage without
                                              accidentally being below the voltage for current speed */
