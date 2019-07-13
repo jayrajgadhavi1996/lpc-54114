@@ -46,8 +46,7 @@ BOARD_InitPins:
  * Function Name : BOARD_InitPins
  * Description   : Configures pin routing and optionally pin electrical features.
  *
- * END ****************************************************************************************************************/
-/* Function assigned for the undefined */
+ * END **************************************************************************************************************
 void BOARD_InitPins(void)
 {
     /* Enables the clock for the IOCON block. 0 = Disable; 1 = Enable.: 0x01u */
