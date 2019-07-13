@@ -83,7 +83,6 @@ void BOARD_InitPins(void)
                                         IOCON_PIO_SLEW_STANDARD |
                                         /* Open drain is disabled */
                                         IOCON_PIO_OPENDRAIN_DI);
-    /* PORT0 PIN1 (coords: 32) is configured as FC0_TXD_SCL_MISO */
     IOCON_PinMuxSet(IOCON, 0U, 1U, port0_pin1_config);
 
     const uint32_t port0_pin29_config = (/* Pin is configured as CTIMER0_MAT1 */
