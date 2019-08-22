@@ -207,19 +207,10 @@ int main(void)
          printf("stop");
 
         }
-       // if(ch =='e')
-        //{
-        //printf("reverse");
-        //rintf("right\n");
-        //SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 1, event1);
-        //SCTIMER_UpdatePwmDutycycle(SCT0,SECOND_SCTIMER_OUT,speed, event2);
-        //SCTIMER_UpdatePwmDutycycle(SCT0,THIRD_SCTIMER_OUT, 1, event3);
-        //SCTIMER_UpdatePwmDutycycle(SCT0,FOURTH_SCTIMER_OUT,speed, event4);
-
-        //}
+     
 
 
-        if(ch == 'e')
+        if(ch == 'St')
                 {
                 printf("stop");
                 SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 1, event1);
