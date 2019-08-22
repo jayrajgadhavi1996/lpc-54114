@@ -44,14 +44,14 @@
  ******************************************************************************/
 
 
-#define DEMO_USART USART2
-#define DEMO_USART_CLK_SRC kCLOCK_Flexcomm2
-#define DEMO_USART_CLK_FREQ CLOCK_GetFreq(kCLOCK_Flexcomm2)
+#define USART USART2
+#define USART_CLK_SRC kCLOCK_Flexcomm2
+#define USART_CLK_FREQ CLOCK_GetFreq(kCLOCK_Flexcomm2)
 #define SCTIMER_CLK_FREQ CLOCK_GetFreq(kCLOCK_BusClk)
-#define DEMO_FIRST_SCTIMER_OUT kSCTIMER_Out_4
-#define DEMO_SECOND_SCTIMER_OUT kSCTIMER_Out_5
-#define DEMO_THIRD_SCTIMER_OUT kSCTIMER_Out_7
-#define DEMO_FOURTH_SCTIMER_OUT kSCTIMER_Out_2
+#define FIRST_SCTIMER_OUT kSCTIMER_Out_4
+#define SECOND_SCTIMER_OUT kSCTIMER_Out_5
+#define THIRD_SCTIMER_OUT kSCTIMER_Out_7
+#define FOURTH_SCTIMER_OUT kSCTIMER_Out_2
  sctimer_config_t sctimerInfo;
  sctimer_pwm_signal_param_t pwmParam;
  uint32_t event1,event2,event3,event4,speed=70;
