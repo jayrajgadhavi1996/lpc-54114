@@ -53,7 +53,7 @@
 #define THIRD_SCTIMER_OUT kSCTIMER_Out_7
 #define FOURTH_SCTIMER_OUT kSCTIMER_Out_2
  sctimer_config_t sctimerInfo;
- sctimer_pwm_signal_param_t pwmParam;
+ sctimer_pwm_signal_param_t pwmParameter;
  uint32_t event1,event2,event3,event4,speed=70;
  uint32_t sctimerClock;
 
@@ -82,7 +82,7 @@ int main(void)
 
 
    sctimer_config_t sctimerInfo;
-   sctimer_pwm_signal_param_t pwmParam;
+   sctimer_pwm_signal_param_t pwmParameter;
 
 
    uint32_t event1,event2,event3,event4,speed=79;
@@ -119,33 +119,33 @@ int main(void)
 
 
 
-    pwmParam.output = FIRST_SCTIMER_OUT;
-    pwmParam.level = kSCTIMER_HighTrue;
-    pwmParam.dutyCyclePercent = 1;
-    if (SCTIMER_SetupPwm(SCT0, &pwmParam, kSCTIMER_EdgeAlignedPwm , 2400U, sctimerClock, &event1) == kStatus_Fail)
+    pwmParameter.output = FIRST_SCTIMER_OUT;
+    pwmParameter.level = kSCTIMER_HighTrue;
+    pwmParameter.dutyCyclePercent = 1;
+    if (SCTIMER_SetupPwm(SCT0, &pwmParameter, kSCTIMER_EdgeAlignedPwm , 2400U, sctimerClock, &event1) == kStatus_Fail)
     {
            return -1;
     }
 
-    pwmParam.output = SECOND_SCTIMER_OUT;
-    pwmParam.level = kSCTIMER_HighTrue;
-        pwmParam.dutyCyclePercent =2 ;
-        if (SCTIMER_SetupPwm(SCT0, &pwmParam, kSCTIMER_EdgeAlignedPwm , 2400U, sctimerClock, &event2) == kStatus_Fail)
+    pwmParameter.output = SECOND_SCTIMER_OUT;
+    pwmParameter.level = kSCTIMER_HighTrue;
+        pwmParameter.dutyCyclePercent =2 ;
+        if (SCTIMER_SetupPwm(SCT0, &pwmParameter, kSCTIMER_EdgeAlignedPwm , 2400U, sctimerClock, &event2) == kStatus_Fail)
         {
                return -1;
         }
-        pwmParam.output = THIRD_SCTIMER_OUT;
-        pwmParam.level = kSCTIMER_HighTrue;
-        pwmParam.dutyCyclePercent = 1;
-        if (SCTIMER_SetupPwm(SCT0, &pwmParam, kSCTIMER_EdgeAlignedPwm , 2400U, sctimerClock, &event3) == kStatus_Fail)
+        pwmParameter.output = THIRD_SCTIMER_OUT;
+        pwmParameter.level = kSCTIMER_HighTrue;
+        pwmParameter.dutyCyclePercent = 1;
+        if (SCTIMER_SetupPwm(SCT0, &pwmParameter, kSCTIMER_EdgeAlignedPwm , 2400U, sctimerClock, &event3) == kStatus_Fail)
         {
               return -1;
         }
 
-        pwmParam.output = FOURTH_SCTIMER_OUT;
-        pwmParam.level = kSCTIMER_HighTrue;
-        pwmParam.dutyCyclePercent =2 ;
-        if (SCTIMER_SetupPwm(SCT0, &pwmParam, kSCTIMER_EdgeAlignedPwm , 2400U, sctimerClock, &event4) == kStatus_Fail)
+        pwmParameter.output = FOURTH_SCTIMER_OUT;
+        pwmParameter.level = kSCTIMER_HighTrue;
+        pwmParameter.dutyCyclePercent =2 ;
+        if (SCTIMER_SetupPwm(SCT0, &pwmParameter, kSCTIMER_EdgeAlignedPwm , 2400U, sctimerClock, &event4) == kStatus_Fail)
         {
                  return -1;
         }
@@ -157,50 +157,54 @@ int main(void)
         USART_ReadBlocking(USART, &ch, 1);
 //g
 
-        if(ch == 'f')
-                {
-                printf("Rotate on axis\n");
-                  SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 60, event1);
-                  SCTIMER_UpdatePwmDutycycle(SCT0,SECOND_SCTIMER_OUT,1, event2);
-                  SCTIMER_UpdatePwmDutycycle(SCT0,THIRD_SCTIMER_OUT, 1, event3);
-                  SCTIMER_UpdatePwmDutycycle(SCT0,FOURTH_SCTIMER_OUT,60, event4);
-
-                }
-
-        if(ch == 'b')
+ if(ch == 'S')
         {
-        printf("right\n");
-          SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, speed, event1);
+        SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT,70, event1);
+        SCTIMER_UpdatePwmDutycycle(SCT0,SECOND_SCTIMER_OUT,1, event2);
+        SCTIMER_UpdatePwmDutycycle(SCT0,THIRD_SCTIMER_OUT,70, event3);
+        SCTIMER_UpdatePwmDutycycle(SCT0,FOURTH_SCTIMER_OUT,1, event4);
+
+        printf("Straight\n");
+        }
+     
+        if(ch == 'R')
+        {
+       
+          SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 70, event1);
           SCTIMER_UpdatePwmDutycycle(SCT0,SECOND_SCTIMER_OUT,1, event2);
           SCTIMER_UpdatePwmDutycycle(SCT0,THIRD_SCTIMER_OUT, 1, event3);
           SCTIMER_UpdatePwmDutycycle(SCT0,FOURTH_SCTIMER_OUT,1, event4);
+          printf("right\n");
 
         }
-       if(ch == 'a')
+       if(ch == 'L')
         {
       SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 1, event1);
       SCTIMER_UpdatePwmDutycycle(SCT0,SECOND_SCTIMER_OUT, 1, event2);
-      SCTIMER_UpdatePwmDutycycle(SCT0,THIRD_SCTIMER_OUT, speed, event3);
+      SCTIMER_UpdatePwmDutycycle(SCT0,THIRD_SCTIMER_OUT, 70, event3);
       SCTIMER_UpdatePwmDutycycle(SCT0,FOURTH_SCTIMER_OUT, 1, event4);
 
       printf("left\n");
         }
-        if(ch == 'c')
-        {
-        SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT,speed, event1);
-        SCTIMER_UpdatePwmDutycycle(SCT0,SECOND_SCTIMER_OUT,1, event2);
-             SCTIMER_UpdatePwmDutycycle(SCT0,THIRD_SCTIMER_OUT,speed, event3);
-        SCTIMER_UpdatePwmDutycycle(SCT0,FOURTH_SCTIMER_OUT,1, event4);
+       
+        if(ch == 'Ro')
+                {
+                
+                  SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 70, event1);
+                  SCTIMER_UpdatePwmDutycycle(SCT0,SECOND_SCTIMER_OUT,1, event2);
+                  SCTIMER_UpdatePwmDutycycle(SCT0,THIRD_SCTIMER_OUT, 1, event3);
+                  SCTIMER_UpdatePwmDutycycle(SCT0,FOURTH_SCTIMER_OUT,70, event4);
+         printf("Rotate on axis\n");
 
-        printf("go straight\n");
-        }
-        if(ch == 'd')
+                }
+        if(ch == 'St')
         {
-        printf("stop");
+        
         SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 1, event1);
         SCTIMER_UpdatePwmDutycycle(SCT0,SECOND_SCTIMER_OUT, 1, event2);
         SCTIMER_UpdatePwmDutycycle(SCT0,THIRD_SCTIMER_OUT, 1, event3);
         SCTIMER_UpdatePwmDutycycle(SCT0,FOURTH_SCTIMER_OUT, 1, event4);
+         printf("stop");
 
         }
        // if(ch =='e')
