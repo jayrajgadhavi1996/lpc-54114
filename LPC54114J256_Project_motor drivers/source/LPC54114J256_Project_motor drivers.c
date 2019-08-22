@@ -76,7 +76,7 @@ uint8_t txbuff[] = "Usart polling example\r\nBoard will send back received chara
  */
 int main(void)
 {
-    uint8_t ch;
+    uint8_t Ev;
     usart_config_t config;
 
 
@@ -85,7 +85,7 @@ int main(void)
    sctimer_pwm_signal_param_t pwmParameter;
 
 
-   uint32_t event1,event2,event3,event4,speed=79;
+   uint32_t event1,event2,event3,event4,speed=70;
    uint32_t sctimerClock;
 
     /* attach 12 MHz clock to FLEXCOMM0 (debug console) */
@@ -155,9 +155,8 @@ int main(void)
     while (1)
     {
         USART_ReadBlocking(USART, &ch, 1);
-//g
 
- if(ch == 'S')
+ if(Ev == 'S')
         {
         SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT,70, event1);
         SCTIMER_UpdatePwmDutycycle(SCT0,SECOND_SCTIMER_OUT,1, event2);
@@ -167,7 +166,7 @@ int main(void)
         printf("Straight\n");
         }
      
-        if(ch == 'R')
+        if(Ev == 'R')
         {
        
           SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 70, event1);
@@ -177,7 +176,7 @@ int main(void)
           printf("right\n");
 
         }
-       if(ch == 'L')
+       if(Ev == 'L')
         {
       SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 1, event1);
       SCTIMER_UpdatePwmDutycycle(SCT0,SECOND_SCTIMER_OUT, 1, event2);
@@ -187,7 +186,7 @@ int main(void)
       printf("left\n");
         }
        
-        if(ch == 'Ro')
+        if(Ev == 'Ro')
                 {
                 
                   SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 70, event1);
@@ -197,7 +196,7 @@ int main(void)
          printf("Rotate on axis\n");
 
                 }
-        if(ch == 'St')
+        if(Ev == 'St')
         {
         
         SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 1, event1);
@@ -210,7 +209,7 @@ int main(void)
      
 
 
-        if(ch == 'St')
+        if(Ev == 'St')
                 {
                 printf("stop");
                 SCTIMER_UpdatePwmDutycycle(SCT0,FIRST_SCTIMER_OUT, 1, event1);
@@ -219,7 +218,7 @@ int main(void)
                 SCTIMER_UpdatePwmDutycycle(SCT0,FOURTH_SCTIMER_OUT, 4, event4);
 
                 }
-        //USART_WriteBlocking(DEMO_USART, &ch, 1);
+     
     }
 }
 
