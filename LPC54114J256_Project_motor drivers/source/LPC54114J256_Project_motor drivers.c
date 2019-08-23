@@ -218,8 +218,6 @@ int main(void)
                 SCTIMER_UpdatePwmDutycycle(SCT0,FOURTH_SCTIMER_OUT, 4, event4);
 
                 }
-     
-    }
-}
-
+              }
+             }
 
